@@ -32,17 +32,14 @@ export const Navbar = () => {
             <motion.nav
                 animate={{
                     boxShadow: scrolled ? "var(--shadow-input)" : "none",
-                    width: scrolled ? "40%" : "100%",
+                    width: scrolled ? "50%" : "100%",
                     y: scrolled ? 10 : 0,
-                    backgroundColor: scrolled
-                        ? "rgba(255, 255, 255, 0.8)"
-                        : "transparent",
                 }}
                 transition={{
                     duration: 0.3,
-                    ease: "easeInOut",
+                    ease: "linear",
                 }}
-                className="fixed inset-x-0 top-1 mx-auto flex max-w-4xl items-center justify-between rounded-full px-3 py-2 dark:bg-neutral-900"
+                className="fixed inset-x-0 top-1 mx-auto flex max-w-4xl items-center justify-between rounded-4xl px-7 py-2 bg-white dark:bg-neutral-900 z-100"
             >
                 <Image
                     className="h-10 w-10 rounded-full"
@@ -67,7 +64,7 @@ export const Navbar = () => {
                                     className="absolute inset-0 h-full w-full rounded-md bg-neutral-100 dark:bg-neutral-800"
                                 />
                             )}
-                            <span className="relative z-10">{item.title}</span>
+                            <span className="relative z-10 text-black dark:text-white">{item.title}</span>
                         </Link>
                     ))}
                 </div>
