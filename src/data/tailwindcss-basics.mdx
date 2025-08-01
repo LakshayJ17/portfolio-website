@@ -1,0 +1,184 @@
+{/* ---
+title: 'Getting Started With Tailwind CSS v4'
+description: 'A practical introduction to Tailwind CSS v4 and its modern workflow'
+date: '2024-08-01'
+--- */}
+
+# Getting Started with Tailwind CSS v4: The Modern Utility-First Framework
+
+Tailwind CSS v4 brings a new era of utility-first styling with a streamlined configuration and plugin system. This guide will help you understand the essentials and get productive with the latest version.
+
+## What is Tailwind CSS?
+
+Tailwind CSS is a utility-first CSS framework that lets you build custom designs directly in your markup using small, composable classes. With v4, the workflow is even more integrated and efficient.
+
+```html
+<!-- Traditional CSS approach -->
+<div class="card">
+  <h2 class="card-title">Hello World</h2>
+</div>
+
+<!-- Tailwind CSS v4 approach -->
+<div class="bg-white rounded-lg shadow-md p-6">
+  <h2 class="text-2xl font-bold text-gray-800">Hello World</h2>
+</div>
+```
+
+## Why Choose Tailwind CSS v4?
+
+### 1. **Integrated Plugin System**
+Plugins like Typography are now included directly in your CSS using the `@plugin` directive.
+
+### 2. **Faster Builds**
+Tailwind v4 is built for speed, with a new engine that delivers lightning-fast builds and smaller CSS output.
+
+### 3. **Simplified Configuration**
+No more `tailwind.config.js` by default—use the new `@theme` directive in your CSS for inline theming.
+
+### 4. **Consistent, Customizable Design**
+Utility classes and theming ensure design consistency and easy customization.
+
+## Core Concepts
+
+### Utility Classes
+Tailwind provides thousands of utility classes for:
+
+- **Layout**: `flex`, `grid`, `container`
+- **Spacing**: `p-4`, `m-2`, `gap-4`
+- **Typography**: `text-lg`, `font-bold`, `text-center`
+- **Colors**: `bg-blue-500`, `text-red-600`
+- **Borders**: `border`, `rounded-lg`, `border-gray-300`
+
+### Responsive Design
+Utilities are responsive by default:
+
+```html
+<div class="text-sm md:text-base lg:text-lg xl:text-xl">
+  Responsive text sizing
+</div>
+```
+
+### Dark Mode
+Dark mode is built-in with the `dark:` prefix:
+
+```html
+<div class="bg-white dark:bg-gray-900 text-black dark:text-white">
+  Theme-aware content
+</div>
+```
+
+## Common Patterns
+
+### Card Component
+```html
+<div class="bg-white rounded-xl shadow-lg overflow-hidden">
+  <img class="w-full h-48 object-cover" src="image.jpg" alt="">
+  <div class="p-6">
+    <h3 class="text-xl font-semibold mb-2">Card Title</h3>
+    <p class="text-gray-600">Card description goes here.</p>
+  </div>
+</div>
+```
+
+### Button Styles
+```html
+<!-- Primary Button -->
+<button class="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200">
+  Click Me
+</button>
+
+<!-- Secondary Button -->
+<button class="border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium py-2 px-4 rounded-lg transition duration-200">
+  Cancel
+</button>
+```
+
+### Flexbox Layout
+```html
+<div class="flex items-center justify-between p-4">
+  <div class="flex items-center space-x-3">
+    <img class="w-10 h-10 rounded-full" src="avatar.jpg" alt="">
+    <div>
+      <h4 class="font-medium">John Doe</h4>
+      <p class="text-sm text-gray-500">Developer</p>
+    </div>
+  </div>
+  <button class="text-blue-600 hover:text-blue-800">
+    Follow
+  </button>
+</div>
+```
+
+## Advanced Features
+
+### Inline Theming with `@theme`
+Define your design tokens directly in your CSS:
+
+```css
+@theme inline {
+  --color-primary: #3B82F6;
+  --color-secondary: #64748B;
+}
+```
+
+### Using Plugins with `@plugin`
+Add plugins like Typography directly in your CSS:
+
+```css
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+```
+
+### Custom Utilities with `@apply`
+Extract utility patterns for reuse:
+
+```css
+.btn {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition duration-200;
+}
+```
+
+## Best Practices
+
+- **Use utility classes for rapid prototyping and production.**
+- **Leverage responsive and dark mode variants for accessibility.**
+- **Define theme tokens with `@theme inline` for easy customization.**
+- **Use the `@plugin` directive for official plugins like Typography.**
+
+## Getting Started
+
+### Installation
+
+```bash
+# Install Tailwind CSS v4
+npm install -D tailwindcss@latest
+npx tailwindcss init
+```
+
+### Add to your CSS
+
+```css
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@theme inline {
+  --color-primary: #3B82F6;
+  --color-secondary: #64748B;
+}
+```
+
+### With Next.js
+
+```bash
+npm install -D tailwindcss@latest postcss autoprefixer
+npx tailwindcss init -p
+```
+
+## Conclusion
+
+Tailwind CSS v4 makes utility-first styling even more powerful and developer-friendly. With integrated plugins, inline theming, and a blazing-fast build process, you can ship beautiful, consistent UIs faster than ever.
+
+**Ready to try Tailwind CSS v4?** Start with a simple project and explore the new features. The [official documentation](https://tailwindcss.com/docs/installation) is excellent, and the community is always ready to help.
+
+---
+
+*Want more web development tutorials? Check out my other articles on React, Next.js, and modern development practices.*
