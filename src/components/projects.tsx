@@ -48,7 +48,7 @@ export const Projects = () => {
             initial={{
               opacity: 0,
               filter: "blur(10px)",
-              y: 100,
+              y: 10,
             }}
             whileInView={{
               opacity: 1,
