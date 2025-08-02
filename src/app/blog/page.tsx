@@ -5,19 +5,24 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "All blogs - Lakshay Jain",
-    description: "All my general wisdom and thoughts"
-}
+    description: "All my general wisdom and thoughts",
+};
 
 export default async function BlogsPage() {
-    const allBlogs = await getBlogs()
-    console.log("all blogs: ", allBlogs)
+    const allBlogs = await getBlogs();
+    // console.log("all blogs: ", allBlogs);
+
+    const truncate = (str: string, length: number) => {
+        return str.length > length ? str.substring(0, length) + "..." : str;
+    };
+
     return (
-        <div className="min-h-screen flex items-start justify-start">
+        <div className="flex min-h-screen items-start justify-start">
             <Container className="min-h-[200vh] px-8 md:pt-20 md:pb-10">
-                <h1 className="text-2xl md:text-4xl font-bold tracking-light text-primary">
+                <h1 className="tracking-light text-primary text-2xl font-bold md:text-4xl">
                     All blogs
                 </h1>
-                <p className="text-sm text-secondary md:text-base pt-4 max-w-lg">
+                <p className="text-secondary max-w-lg pt-4 text-sm md:text-base">
                     I&apos;m a passionate Full Stack Web Developer who transforms ideas
                     into dynamic, user-centric digital experiences. With expertise
                     spanning modern frontend frameworks like React and Next.js to robust
@@ -25,10 +30,19 @@ export default async function BlogsPage() {
                     solutions that bridge the gap between innovative design and powerful
                     functionality.
                 </p>
-                <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-4 py-10">
                     {allBlogs.map((blog, idx) => (
                         <Link href={`/blog/${blog.slug}`} key={idx}>
-                            <h2 className="text-primary text-2xl font-bold tracking-tight md:text-4xl">{blog.title}</h2>
+                            <div className="flex items-center justify-between">
+                                <h2 className="text-primary text-base font-bold tracking-tight">
+                                    {blog.title}
+                                </h2>
+                                <p className="text-secondary text-sm md:text-sm">{blog.date}</p>
+                            </div>
+
+                            <p className="text-secondary max-w-lg pt-2 text-sm md:text-sm">
+                                {truncate(blog.description || "", 150)}
+                            </p>
                         </Link>
                     ))}
                 </div>
