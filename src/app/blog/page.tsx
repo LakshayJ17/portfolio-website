@@ -1,7 +1,8 @@
 import { Container } from "@/components/container";
 import { getBlogs } from "@/utils/mdx";
 import { Metadata } from "next";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
+
 
 export const metadata: Metadata = {
     title: "All blogs - Lakshay Jain",
@@ -32,12 +33,12 @@ export default async function BlogsPage() {
                 </p>
                 <div className="flex flex-col gap-4 py-10">
                     {allBlogs.map((blog, idx) => (
-                        <Link href={`/blog/${blog.slug}`} key={idx}>
+                        <Link href={`/blog/${blog.slug}`} key={blog.title}>
                             <div className="flex items-center justify-between">
                                 <h2 className="text-primary text-base font-bold tracking-tight">
                                     {blog.title}
                                 </h2>
-                                <p className="text-secondary text-sm md:text-sm">{blog.date}</p>
+                                <p className="text-secondary text-sm md:text-sm">{new Date(blog.date || "").toLocaleDateString('en-us', { weekday: "long", year: "numeric", month: "short", day: "numeric" })}</p>
                             </div>
 
                             <p className="text-secondary max-w-lg pt-2 text-sm md:text-sm">
