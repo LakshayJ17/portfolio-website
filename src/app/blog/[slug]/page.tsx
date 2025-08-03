@@ -7,7 +7,8 @@ export async function generateMetadata({
 }: {
     params: { slug: string };
 }) {
-    const frontmatter = await getBlogFrontMatterBySlug(params.slug);
+    const {slug} = await params;
+    const frontmatter = await getBlogFrontMatterBySlug(slug);
 
     if (!frontmatter) {
         return {
@@ -28,7 +29,9 @@ export default async function SingleBlogPage({
         slug: string;
     };
 }) {
-    const blog = await getSingleBlog(params.slug);
+    const {slug} = await params;
+
+    const blog = await getSingleBlog(slug);
 
     if (!blog) {
         redirect("/blog");
