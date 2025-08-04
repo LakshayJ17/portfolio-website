@@ -70,14 +70,14 @@ const Timeline = () => {
     return (
         <div ref={ref} className="py-10">
             {data.map((year, index) => (
-                <div key={year.title}>
+                <div key={year.title} className="mb-4">
                     <motion.h2
                         animate={{
                             filter: isInView ? "blur(0px)" : "blur(10px)",
                             opacity: isInView ? 1 : 0,
                         }}
                         transition={{
-                            duration: 0.3,
+                            duration: 0.5,
                             ease: "easeInOut",
                             delay: 0.1 * index,
                         }}
@@ -85,6 +85,7 @@ const Timeline = () => {
                     >
                         {year.title}
                     </motion.h2>
+
                     <div className="flex flex-col gap-4">
                         {year.content.map((item, idx) => (
                         <div key={item.title} className="pl-4">
@@ -94,11 +95,11 @@ const Timeline = () => {
                                     y: isInView ? 0 : -10,
                                 }}
                                 transition={{
-                                    duration: 0.3,
+                                    duration: 0.5,
                                     ease: "easeInOut",
                                     delay: 0.2 * idx,
                                 }}
-                                className="text-meutral-800"
+                                className="text-neutral-800"
                             >
                                 {item.title}
                             </motion.h3>

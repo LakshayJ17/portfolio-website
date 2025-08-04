@@ -7,7 +7,7 @@ export async function generateMetadata({
 }: {
     params: { slug: string };
 }) {
-    const {slug} = await params;
+    const { slug } = params;
     const frontmatter = await getBlogFrontMatterBySlug(slug);
 
     if (!frontmatter) {
@@ -18,7 +18,7 @@ export async function generateMetadata({
 
     return {
         title: frontmatter.title + " - Lakshay Jain",
-        descripion: frontmatter.description,
+        description: frontmatter.description,
     };
 }
 
@@ -29,7 +29,7 @@ export default async function SingleBlogPage({
         slug: string;
     };
 }) {
-    const {slug} = await params;
+    const { slug } = params;
 
     const blog = await getSingleBlog(slug);
 
