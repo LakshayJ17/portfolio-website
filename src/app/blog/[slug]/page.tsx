@@ -5,9 +5,9 @@ import { redirect } from "next/navigation";
 export async function generateMetadata({
     params,
 }: {
-    params: { slug: string };
+    params: Promise<{ slug: string }>;
 }) {
-    const { slug } = params;
+    const { slug } = await params;
     const frontmatter = await getBlogFrontMatterBySlug(slug);
 
     if (!frontmatter) {
@@ -25,11 +25,9 @@ export async function generateMetadata({
 export default async function SingleBlogPage({
     params,
 }: {
-    params: {
-        slug: string;
-    };
+    params: Promise<{ slug: string }>;
 }) {
-    const { slug } = params;
+    const { slug } = await params;
 
     const blog = await getSingleBlog(slug);
 
