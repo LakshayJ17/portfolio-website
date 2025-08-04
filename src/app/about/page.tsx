@@ -1,6 +1,7 @@
 import { Collage } from "@/components/collage";
 import { Container } from "@/components/container";
-import Timeline from "@/components/timeline";
+import { Timeline } from "@/components/timeline";
+
 import React from "react";
 
 const AboutPage = () => {

@@ -2,7 +2,8 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "motion/react";
-import {IconCirleCheckFilled} from '@tabler/icons-react';
+import { IconCircleCheckFilled } from "@tabler/icons-react";
+import { cn } from "@/lib/utils";
 
 type Data = {
   title: string;
@@ -91,20 +92,22 @@ export const Timeline = () => {
           <div className="flex flex-col gap-4">
             {year.content.map((item, idx) => (
               <div key={item.title} className="pl-4">
-                <motion.h3
-                  animate={{
-                    opacity: isInView ? 1 : 0,
-                    y: isInView ? 0 : -10,
-                  }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeInOut",
-                    delay: 0.2 * idx,
-                  }}
-                  className="text-neutral-600"
-                >
-                  {item.title}
-                </motion.h3>
+                <Step isInView={isInView} idx={idx}>
+                  <motion.h3
+                    animate={{
+                      opacity: isInView ? 1 : 0,
+                      y: isInView ? 0 : -10,
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      ease: "easeInOut",
+                      delay: 0.2 * idx,
+                    }}
+                    className="text-neutral-600"
+                  >
+                    {item.title}
+                  </motion.h3>
+                </Step>
                 {item.description && (
                   <p className="pt-1 text-sm text-neutral-400">
                     {item.description}
@@ -119,10 +122,27 @@ export const Timeline = () => {
   );
 };
 
-const step = () => {
-    return <div className="flex gap-2 items-center">
-        <IconCirleCheckFilled />
-    </div>
-}
-
-
+const Step = ({
+  className,
+  children,
+  isInView,
+  idx,
+}: {
+  className?: string;
+  children: React.ReactNode;
+  isInView: boolean;
+  idx: number;
+}) => {
+  return (
+    <motion.div
+      animate={{
+        opacity: isInView ? 1 : 0,
+        y: isInView ? 0 : -10,
+      }}
+      className={cn("flex items-center gap-2")}
+    >
+      <IconCircleCheckFilled className="mt-0.5 h-4 w-4 text-neutral-500" />
+      {children}
+    </motion.div>
+  );
+};
