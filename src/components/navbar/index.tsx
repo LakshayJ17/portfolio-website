@@ -2,8 +2,14 @@
 
 import Image from "next/image";
 import { Container } from "../container";
-import Link from "next/link";
-import { motion, useMotionTemplate, useMotionValueEvent, useScroll, useTransform } from "motion/react";
+import { Link } from "next-view-transitions";
+import {
+    motion,
+    useMotionTemplate,
+    useMotionValueEvent,
+    useScroll,
+    useTransform,
+} from "motion/react";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -18,12 +24,11 @@ export const Navbar = () => {
     const { scrollY } = useScroll();
 
     const [scrolled, setScrolled] = useState<boolean>(false);
-    
-    const y = useTransform(scrollY, [0,100], [0,10])
-    const width = useTransform(scrollY, [0,100], ["50%", "40%"])
+
+    const y = useTransform(scrollY, [0, 100], [0, 10]);
+    const width = useTransform(scrollY, [0, 100], ["50%", "40%"]);
     // const opacity = useTransform(scrollY, [0,100], [1,0.8])
     // const filter = useMotionTemplate`blur(${useTransform(scrollY, [0,100], [0,10] )}px)`
-
 
     useMotionValueEvent(scrollY, "change", (latest) => {
         if (latest > 20) {
@@ -47,18 +52,18 @@ export const Navbar = () => {
                     duration: 0.3,
                     ease: "linear",
                 }}
-                className="fixed inset-x-0 top-1 mx-auto flex max-w-4xl items-center justify-between rounded-4xl px-7 py-2 bg-white dark:bg-neutral-900 z-100"
+                className="fixed inset-x-0 top-1 z-100 mx-auto flex max-w-4xl items-center justify-between rounded-4xl bg-white px-7 py-2 dark:bg-neutral-900"
             >
                 <Link href="/">
-                <Image
-                    className="h-10 w-10 rounded-full"
-                    src="/avatar-portfolio.png"
-                    width="100"
-                    height="100"
-                    alt="Avatar"
-                />
+                    <Image
+                        className="h-10 w-10 rounded-full"
+                        src="/avatar-portfolio.png"
+                        width="100"
+                        height="100"
+                        alt="Avatar"
+                    />
                 </Link>
-                
+
                 <div className="flex items-center">
                     {navItems.map((item, idx) => (
                         <Link
@@ -74,7 +79,9 @@ export const Navbar = () => {
                                     className="absolute inset-0 h-full w-full rounded-md bg-neutral-100 dark:bg-neutral-800"
                                 />
                             )}
-                            <span className="relative z-10 text-black dark:text-white">{item.title}</span>
+                            <span className="relative z-10 text-black dark:text-white">
+                                {item.title}
+                            </span>
                         </Link>
                     ))}
                 </div>

@@ -1,4 +1,6 @@
 import { Container } from "@/components/container";
+import { Heading } from "@/components/heading";
+import { Subheading } from "@/components/subheading";
 import { getBlogs } from "@/utils/mdx";
 import { Metadata } from "next";
 import { Link } from "next-view-transitions";
@@ -20,17 +22,17 @@ export default async function BlogsPage() {
     return (
         <div className="flex min-h-screen items-start justify-start">
             <Container className="min-h-[200vh] px-8 md:pt-20 md:pb-10">
-                <h1 className="tracking-light text-primary text-2xl font-bold md:text-4xl">
+                <Heading>
                     All blogs
-                </h1>
-                <p className="text-secondary max-w-lg pt-4 text-sm md:text-base">
+                </Heading>
+                <Subheading>
                     I&apos;m a passionate Full Stack Web Developer who transforms ideas
                     into dynamic, user-centric digital experiences. With expertise
                     spanning modern frontend frameworks like React and Next.js to robust
                     backend technologies including Node.js and databases, I craft scalable
                     solutions that bridge the gap between innovative design and powerful
                     functionality.
-                </p>
+                </Subheading>
                 <div className="flex flex-col gap-4 py-10">
                     {allBlogs.map((blog, idx) => (
                         <Link href={`/blog/${blog.slug}`} key={blog.title}>

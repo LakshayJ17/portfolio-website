@@ -3,6 +3,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { Navbar } from "@/components/navbar";
 import { ViewTransitions } from 'next-view-transitions'
+import { Footer } from "@/components/navbar/footer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
         >
           <Navbar />
           {children}
+          <Footer />
         </body>
       </html>
     </ViewTransitions>

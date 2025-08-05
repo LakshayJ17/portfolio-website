@@ -1,5 +1,6 @@
 import { Container } from "@/components/container";
 import { getBlogFrontMatterBySlug, getSingleBlog } from "@/utils/mdx";
+import Image from "next/image";
 import { redirect } from "next/navigation";
 
 export async function generateMetadata({
@@ -9,7 +10,7 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const frontmatter = await getBlogFrontMatterBySlug(slug);
-
+  // console.log(frontmatter)
   if (!frontmatter) {
     return {
       title: "Blog not found",
@@ -41,11 +42,22 @@ export default async function SingleBlogPage({
   return (
     <div className="flex min-h-screen items-start justify-start">
       <Container className="min-h-[200vh] px-8 md:pt-20 md:pb-10">
-        <img
+        <Image
+          width={500}
+          height={100}
           src={frontmatter.image}
           alt={frontmatter.title}
-          className="mx-auto mb-20 max-h-96 w-full max-w-2xl rounded-full border border-neutral-200 shadow-xl"
+          className="mx-auto mb-10 max-h-96 w-full max-w-2xl rounded-2xl border border-neutral-200 object-cover shadow-xl"
         />
+        <div className="flex mx-6 justify-between pb-5 text-secondary">
+          <p className="font-bold text-xl">Author : Lakshay Jain</p>
+          {new Date(frontmatter.date || "").toLocaleDateString("en-us", {
+            weekday: "long",
+            year: "numeric",
+            month: "short",
+            day: "numeric",
+          })}
+        </div>
         <div className="prose mx-auto">{content}</div>
       </Container>
     </div>

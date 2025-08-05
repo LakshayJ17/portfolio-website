@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import Link from "next/link";
+import { Subheading } from "./subheading";
 
 export const Projects = () => {
   const projects = [
@@ -38,9 +39,9 @@ export const Projects = () => {
 
   return (
     <div className="py-10">
-      <p className="text-secondary max-w-lg pt-4 text-sm md:text-base">
+      <Subheading className="text-secondary max-w-lg pt-4 text-sm md:text-base">
         I love building web apps and products that can impact millions online
-      </p>
+      </Subheading>
 
       <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-2">
         {projects.map((project, idx) => (
