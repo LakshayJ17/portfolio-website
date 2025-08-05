@@ -41,7 +41,7 @@ export default async function SingleBlogPage({
 
   return (
     <div className="flex min-h-screen items-start justify-start">
-      <Container className="min-h-[200vh] px-8 md:pt-20 md:pb-10">
+      <Container className="min-h-screen px-8 md:pt-20 md:pb-10">
         <Image
           width={500}
           height={100}

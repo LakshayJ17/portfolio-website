@@ -1,18 +1,22 @@
+import { Collage } from "@/components/collage";
+import { ContactForm } from "@/components/contact-form";
 import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
-import { Projects } from "@/components/projects";
 import { Subheading } from "@/components/subheading";
+import { Timeline } from "@/components/timeline";
 
-export default function ProjectsPage() {
+export default function ContactPage() {
     return (
         <div>
             <div className="flex min-h-screen items-start justify-start">
                 <Container className="min-h-screen px-8 md:pt-20 md:pb-10">
-                    <Heading>Projects</Heading>
+                    <Heading>
+                        Contact Me
+                    </Heading>
                     <Subheading>
-                        Checkout my projects
+                        I&apos;m open to freelancing offers and full time job roles. Reach out to me to inquire more about my work
                     </Subheading>
-                    <Projects />
+<ContactForm />
                 </Container>
             </div>
         </div>

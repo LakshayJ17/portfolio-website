@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { cn } from "@/lib/utils";
 import React from "react";
@@ -19,7 +19,6 @@ export const Subheading = ({
                 opacity: 0,
                 filter: "blur(10px)",
                 y: 10,
-                
             }}
             whileInView={{
                 opacity: 1,
@@ -29,8 +28,9 @@ export const Subheading = ({
             transition={{
                 duration: 0.3,
                 ease: "easeInOut",
-                delay: 0.2
+                delay: 0.2,
             }}
+            viewport={{ once: true }}
         >
             <Tag
                 className={cn(
