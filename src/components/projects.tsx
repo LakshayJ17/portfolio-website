@@ -3,47 +3,17 @@
 import Image from "next/image";
 import { motion } from "motion/react";
 import Link from "next/link";
-import { Subheading } from "./subheading";
+import { Project, projects as defaultProjects } from "@/constants/projects";
+import { SectionHeading } from "./section-heading";
 
-export const Projects = () => {
-  const projects = [
-    {
-      title: "BlogNest",
-      src: "/projects/blognest.png",
-      description:
-        "BlogNest is a dynamic blogging platform where users can explore, share, and publish insightful articles on various topics. Whether you are a writer, reader, or industry expert, BlogNest provides a seamless and engaging experience to discover and express ideas",
-      href: "#",
-    },
-    {
-      title: "AskMyPDF",
-      src: "/projects/askmypdf.png",
-      description:
-        "AskMyPDF is a full-stack application that lets users upload PDF documents and interact with them using AI-powered chat.",
-      href: "#",
-    },
-    {
-      title: "TaskFlux",
-      src: "/projects/blognest.png",
-      description:
-        "AskMyPDF is a full-stack application that lets users upload PDF documents and interact with them using AI-powered chat.",
-      href: "#",
-    },
-    {
-      title: "Portfolio",
-      src: "/projects/askmypdf.png",
-      description:
-        "AskMyPDF is a full-stack application that lets users upload PDF documents and interact with them using AI-powered chat.",
-      href: "#",
-    },
-  ];
-
+export const Projects = ({ projects = defaultProjects }: { projects?: Project[] }) => {
   return (
     <div className="py-10">
-      <Subheading className="text-secondary max-w-lg pt-4 text-sm md:text-base">
-        I love building web apps and products that can impact millions online
-      </Subheading>
+      <SectionHeading>
+        A lifetime in Projecs
+      </SectionHeading>
 
-      <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-3">
         {projects.map((project, idx) => (
           <motion.div
             initial={{
@@ -70,7 +40,7 @@ export const Projects = () => {
                 alt={project.title}
                 height={300}
                 width={300}
-                className="h-48 w-full rounded-xl object-cover transition duration-200 group-hover:scale-[1.02]"
+                className="h-48 w-full rounded-xl transition duration-200 group-hover:scale-[1.02]"
               />
               <div className="mt-4 space-y-2">
                 <h2 className="font-medium tracking-tight text-neutral-800 dark:text-neutral-200">
