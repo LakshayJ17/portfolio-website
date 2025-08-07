@@ -9,7 +9,7 @@ import { SectionHeading } from "./section-heading";
 export const Projects = ({ projects = defaultProjects }: { projects?: Project[] }) => {
   return (
     <div className="py-10">
-      <SectionHeading>
+      <SectionHeading delay={0.2}>
         A lifetime in Projecs
       </SectionHeading>
 
