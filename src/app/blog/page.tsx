@@ -33,7 +33,7 @@ export default async function BlogsPage() {
                     solutions that bridge the gap between innovative design and powerful
                     functionality.
                 </Subheading>
-                <div className="flex flex-col gap-4 py-10">
+                <div className="flex flex-col gap-8 py-10">
                     {allBlogs.map((blog, idx) => (
                         <Link href={`/blog/${blog.slug}`} key={blog.title}>
                             <div className="flex items-center justify-between">

@@ -11,12 +11,12 @@ const LandingBlogs = async () => {
     return str.length > length ? str.substring(0, length) + "..." : str;
   };
   return (
-    <div>
+    <div className="relative isolate overflow-hidden bg-gradient-to-b from-white/20 to-[125%] dark:from-gray-500/20">
       <SectionHeading className="pb-4" delay={0.4}>
         I love writing things down
       </SectionHeading>
-      <div className="flex flex-col gap-4">
-        {allBlogs.map((blog, idx) => (
+      <div className="flex flex-col gap-8">
+        {allBlogs.slice(0,3).map((blog, idx) => (
           <MotionDiv
             key={blog.title}
             initial={{ opacity: 0, y : 10, filter: 'blur(10px)' }}
@@ -42,7 +42,7 @@ const LandingBlogs = async () => {
               </div>
 
               <p className="text-secondary max-w-lg pt-4 text-sm md:text-sm">
-                {truncate(blog.description || "", 150)}
+                {truncate(blog.description || "", 120)}
               </p>
             </Link>
           </MotionDiv>
