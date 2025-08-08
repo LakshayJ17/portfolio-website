@@ -1,6 +1,8 @@
 import { Collage } from "@/components/collage";
 import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
+import { Scales } from "@/components/scales";
+import { SectionHeading } from "@/components/section-heading";
 import { Subheading } from "@/components/subheading";
 import { Timeline } from "@/components/timeline";
 
@@ -8,7 +10,8 @@ export default function AboutPage() {
     return (
         <div>
             <div className="flex min-h-screen items-start justify-start">
-                <Container className="min-h-screen px-8 md:pt-20 md:pb-10">
+                <Container className="min-h-screen px-6 md:pt-20 md:pb-10">
+                    <Scales />
                     <Heading>
                         About Me
                     </Heading>
@@ -20,14 +23,14 @@ export default function AboutPage() {
                         scalable solutions that bridge the gap between innovative design and
                         powerful functionality.
                     </Subheading>
-                    <p className="text-secondary max-w-lg pt-4 text-sm md:text-base">
+                    <SectionHeading className="text-secondary max-w-lg pt-4 text-sm md:text-base px-4">
                         Love to travel
-                    </p>
+                    </SectionHeading>
                     <Collage />
 
-                    <p className="text-secondary max-w-lg pt-4 text-sm md:text-base">
+                    <SectionHeading className="text-secondary max-w-lg pt-4 text-sm md:text-base px-4">
                         Here is a timeline of my life achievements
-                    </p>
+                    </SectionHeading>
                     <Timeline />
                 </Container>
             </div>

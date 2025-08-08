@@ -11,7 +11,7 @@ const LandingBlogs = async () => {
     return str.length > length ? str.substring(0, length) + "..." : str;
   };
   return (
-    <div className="relative isolate overflow-hidden bg-gradient-to-b from-white/20 to-[125%] dark:from-gray-500/20">
+    <div className="px-4">
       <SectionHeading className="pb-4" delay={0.4}>
         I love writing things down
       </SectionHeading>
@@ -41,7 +41,7 @@ const LandingBlogs = async () => {
                 </p>
               </div>
 
-              <p className="text-secondary max-w-lg pt-4 text-sm md:text-sm">
+              <p className="text-secondary max-w-lg pt-1 text-sm md:text-sm">
                 {truncate(blog.description || "", 120)}
               </p>
             </Link>

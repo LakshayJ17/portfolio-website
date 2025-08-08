@@ -5,7 +5,6 @@ import { Container } from "../container";
 import { Link } from "next-view-transitions";
 import {
     motion,
-    useMotionTemplate,
     useMotionValueEvent,
     useScroll,
     useTransform,
@@ -26,7 +25,7 @@ export const Navbar = () => {
     const [scrolled, setScrolled] = useState<boolean>(false);
 
     const y = useTransform(scrollY, [0, 100], [0, 10]);
-    const width = useTransform(scrollY, [0, 100], ["50%", "40%"]);
+    const width = useTransform(scrollY, [0, 100], ["56%", "45%"]);
     // const opacity = useTransform(scrollY, [0,100], [1,0.8])
     // const filter = useMotionTemplate`blur(${useTransform(scrollY, [0,100], [0,10] )}px)`
 
@@ -52,7 +51,7 @@ export const Navbar = () => {
                     duration: 0.3,
                     ease: "linear",
                 }}
-                className="fixed inset-x-0 top-1 z-100 mx-auto flex max-w-4xl items-center justify-between rounded-4xl bg-white px-7 py-2 dark:bg-neutral-900"
+                className="fixed inset-x-0 top-1 z-100 mx-auto flex max-w-4xl items-center justify-between rounded-4xl bg-white/60 px-3 py-2 dark:bg-neutral-900"
             >
                 <Link href="/">
                     <Image

@@ -6,12 +6,14 @@ import Link from "next/link";
 import { Project, projects as defaultProjects } from "@/constants/projects";
 import { SectionHeading } from "./section-heading";
 
-export const Projects = ({ projects = defaultProjects }: { projects?: Project[] }) => {
+export const Projects = ({
+  projects = defaultProjects,
+}: {
+  projects?: Project[];
+}) => {
   return (
-    <div className="py-10">
-      <SectionHeading delay={0.2}>
-        A lifetime in Projecs
-      </SectionHeading>
+    <div className=" border-y border-neutral-100 my-4 px-4">
+      <SectionHeading delay={0.2}>A lifetime in Projecs</SectionHeading>
 
       <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-3">
         {projects.map((project, idx) => (
@@ -46,7 +48,7 @@ export const Projects = ({ projects = defaultProjects }: { projects?: Project[] 
                 <h2 className="font-medium tracking-tight text-neutral-800 dark:text-neutral-200">
                   {project.title}
                 </h2>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-3">
+                <p className="line-clamp-3 text-sm text-neutral-600 dark:text-neutral-400">
                   {project.description}
                 </p>
               </div>

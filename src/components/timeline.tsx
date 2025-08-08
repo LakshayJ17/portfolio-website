@@ -71,7 +71,7 @@ export const Timeline = () => {
     ];
 
     return (
-        <div ref={ref} className="py-10">
+        <div ref={ref} className="py-4 my-6 px-4 shadow-section-inset border-y border-neutral-100">
             {data.map((year, index) => (
                 <div content="px-4 py-1" key={year.title} className="mb-4">
                     <motion.h2
