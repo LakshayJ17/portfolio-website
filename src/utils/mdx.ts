@@ -1,6 +1,8 @@
 import { promises as fs } from 'fs';
-import { compileMDX } from 'next-mdx-remote/rsc';
 import path from 'path';
+import matter from 'gray-matter';
+import { remark } from 'remark';
+import html from 'remark-html';
 
 type FrontMatter = {
     title: string;
@@ -20,15 +22,19 @@ export const getSingleBlog = async (slug: string) => {
             return null;
         }
 
-        const { content, frontmatter } = await compileMDX<FrontMatter>({
-            source: singleBlog,
-            options: { parseFrontmatter: true },
-        });
+        // Parse frontmatter and content separately
+        const { data: frontmatter, content } = matter(singleBlog);
+        
+        // Convert MDX to HTML
+        const processedContent = await remark()
+            .use(html)
+            .process(content);
+        const htmlContent = String(processedContent);
 
-        return { content, frontmatter };
+        return { content: htmlContent, frontmatter: frontmatter as FrontMatter };
 
     } catch (error) {
-        console.error("Error reading or compiling blog:", error);
+        console.error("Error reading blog:", error);
         return null
     }
 }
@@ -52,19 +58,22 @@ export const getBlogs = async () => {
 };
 
 export const getBlogFrontMatterBySlug = async (slug: string) => {
-    const singleBlog = await fs.readFile(
-        path.join(process.cwd(), 'src/data', `${slug}.mdx`),
-        "utf-8"
-    )
+    try {
+        const singleBlog = await fs.readFile(
+            path.join(process.cwd(), "src/data", `${slug}.mdx`),
+            "utf-8"
+        )
 
-    if (!singleBlog) {
+        if (!singleBlog) {
+            return null;
+        }
+
+        // Parse only frontmatter
+        const { data: frontmatter } = matter(singleBlog);
+
+        return frontmatter as FrontMatter;
+    } catch (error) {
+        console.error("Error reading blog frontmatter:", error);
         return null;
     }
-
-    const { frontmatter } = await compileMDX<FrontMatter>({
-        source: singleBlog,
-        options: { parseFrontmatter: true },
-    });
-
-    return frontmatter;
 }
