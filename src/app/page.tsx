@@ -20,7 +20,7 @@ export default function Home() {
           solutions that bridge the gap between innovative design and powerful
           functionality.
         </Subheading>
-        <Projects projects={projects.slice(0, 3)} />
+        <Projects projects={projects.slice(0, 2)} />
         <LandingBlogs />
       </Container>
     </div>

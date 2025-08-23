@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "motion/react";
-import Link from "next/link";
+import { Link } from "next-view-transitions";
 import { Project, projects as defaultProjects } from "@/constants/projects";
 import { SectionHeading } from "./section-heading";
 
@@ -12,10 +12,9 @@ export const Projects = ({
   projects?: Project[];
 }) => {
   return (
-    <div className=" border-y border-neutral-100 my-4 px-4">
+    <div className="my-4 border-y border-neutral-100 px-4">
       <SectionHeading delay={0.2}>A lifetime in Projecs</SectionHeading>
-
-      <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 py-4 md:grid-cols-2">
         {projects.map((project, idx) => (
           <motion.div
             initial={{
@@ -36,7 +35,7 @@ export const Projects = ({
             key={project.title}
             className="group relative"
           >
-            <Link href={project.href} className="block">
+            <Link href={`/projects/${project.slug}`} className="block">
               <Image
                 src={project.src}
                 alt={project.title}

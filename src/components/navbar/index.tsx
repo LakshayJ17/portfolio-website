@@ -74,7 +74,7 @@ export const Navbar = () => {
                         >
                             {hovered === idx && (
                                 <motion.span
-                                    layoutId="hovered-span "
+                                    layoutId="hovered-span"
                                     className="absolute inset-0 h-full w-full rounded-md bg-neutral-100 dark:bg-neutral-800"
                                 />
                             )}
