@@ -21,11 +21,11 @@ export default function Home() {
           solutions that bridge the gap between innovative design and powerful
           functionality.
         </Subheading>
-        <div className="flex m-5">
+        <div className="flex m-4">
           <a
             href="/resume/Lakshay_Jain_FullStackDeveloper.pdf"
             download
-            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2 text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary text-white px-5 py-2 font-semibold shadow-md hover:shadow-lg transition"
           >
             <IconDownload size={20} />
             <span>Download Resume</span>
