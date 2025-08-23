@@ -23,12 +23,8 @@ export default function AboutPage() {
                         scalable solutions that bridge the gap between innovative design and
                         powerful functionality.
                     </Subheading>
-                    <SectionHeading className="text-secondary max-w-lg pt-4 text-sm md:text-base px-4">
-                        Love to travel
-                    </SectionHeading>
-                    <Collage />
 
-                    <SectionHeading className="text-secondary max-w-lg pt-4 text-sm md:text-base px-4">
+                    <SectionHeading className="text-secondary max-w-lg text-sm md:text-base mx-5">
                         Here is a timeline of my life achievements
                     </SectionHeading>
                     <Timeline />

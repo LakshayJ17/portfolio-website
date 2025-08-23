@@ -1,6 +1,7 @@
 import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
 import { Scales } from "@/components/scales";
+import { SectionHeading } from "@/components/section-heading";
 import { Subheading } from "@/components/subheading";
 import { projects } from "@/constants/projects";
 import { IconBrandGithub, IconExternalLink } from "@tabler/icons-react";
@@ -29,12 +30,12 @@ export default async function SingleProject({
       <Heading>{project.title}</Heading>
       <Subheading>{project.description}</Subheading>
 
-      <div className="mt-5 px-5">
+      <div className="mt-1 px-5 flex">
         {project.technologies.map((tech,  idx) => (
-          <span className="border rounded-sm bg-neutral-100 mr-2 p-1" key={idx}>{tech}</span>
+          <SectionHeading className="border rounded-sm bg-neutral-100 mr-3 p-1" key={idx}>{tech}</SectionHeading>
         ))}
       </div>
-      <div className="px-5 mt-10">
+      <div className="px-5 mt-5">
         <Image
           width={800}
           height={400}

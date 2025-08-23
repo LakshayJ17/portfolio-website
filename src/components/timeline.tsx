@@ -23,8 +23,7 @@ export const Timeline = () => {
             content: [
                 {
                     title: "Completed my first freelance project",
-                    description:
-                        "Built a RAG based chatbot and integrated in the website",
+                    description: "Built a RAG based chatbot and integrated in a real estate website",
                 },
             ],
         },
@@ -32,42 +31,11 @@ export const Timeline = () => {
             title: "2024",
             content: [
                 {
-                    title: "Completed my first freelance pro",
-                    description:
-                        "Built a RAG based chatbot and integrated in the website",
+                    title: "Secured 3rd rank in Internal SIH (Smart India Hackathon)",
+                    description: "Ranked 3rd amongst 15 teams in Internal SIH held at GD Goenka University for project GyaanSetu",
                 },
             ],
-        },
-        {
-            title: "2023",
-            content: [
-                {
-                    title: "Completed my first freelance proj",
-                    description:
-                        "Built a RAG based chatbot and integrated in the website",
-                },
-            ],
-        },
-        {
-            title: "2022",
-            content: [
-                {
-                    title: "Completed my first freelance proje",
-                    description:
-                        "Built a RAG based chatbot and integrated in the website",
-                },
-            ],
-        },
-        {
-            title: "2021",
-            content: [
-                {
-                    title: "Completed my first freelance projec",
-                    description:
-                        "Built a RAG based chatbot and integrated in the website",
-                },
-            ],
-        },
+        }
     ];
 
     return (

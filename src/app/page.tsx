@@ -5,6 +5,7 @@ import { Projects } from "@/components/projects";
 import { Scales } from "@/components/scales";
 import { Subheading } from "@/components/subheading";
 import { projects } from "@/constants/projects";
+import { IconDownload } from "@tabler/icons-react";
 
 export default function Home() {
   return (
@@ -20,6 +21,16 @@ export default function Home() {
           solutions that bridge the gap between innovative design and powerful
           functionality.
         </Subheading>
+        <div className="flex m-5">
+          <a
+            href="/resume/Lakshay_Jain_FullStackDeveloper.pdf"
+            download
+            className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-5 py-2 text-white font-semibold shadow-md hover:bg-blue-700 hover:shadow-lg transition"
+          >
+            <IconDownload size={20} />
+            <span>Download Resume</span>
+          </a>
+        </div>
         <Projects projects={projects.slice(0, 2)} />
         <LandingBlogs />
       </Container>
