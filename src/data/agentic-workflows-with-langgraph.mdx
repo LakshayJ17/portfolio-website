@@ -1,0 +1,199 @@
+---
+title: "Understanding Agentic Workflows with LangGraph"
+description: "A deep dive into Agentic AI, why workflows matter, and how LangGraph simplifies building them."
+image: '/blogs/agentic.png'
+date: '06-13-2025'
+
+---
+
+# What is an Agent?
+
+An **Agent** is like an AI worker that:
+
+- Can **think** (use logic)  
+- Can **decide** (based on the input)  
+- Can **act** (perform a task or call a tool)  
+
+You can imagine an agent as an intelligent assistant that doesn’t just respond, but knows how to break a problem into steps, use tools, and adapt based on what’s happening.
+
+---
+
+# What is Agentic Workflow?
+
+An **agentic workflow** is a process where an AI takes initiative, makes decisions, and executes tasks step by step — often using tools, memory, and feedback to achieve a goal.
+
+### Example:
+**Question**: "Who should bowl the final over?"
+
+**AI:**
+- Checks who has overs left  
+- Looks at stats for death overs  
+- Considers match pressure  
+- Picks: **"Give Bumrah the final over."**
+
+---
+
+# Importance
+
+In modern AI applications (like chatbots or decision-making bots), we don’t want AI to just respond — we want it to:
+
+- Understand **context**  
+- Use the **right tools**  
+- Adapt its **behavior**  
+- Make **smart, evolving decisions**  
+
+This is fulfilled using **Agentic AI**, which powers advanced systems like personal assistants, trading bots, gaming AIs, and more.
+
+---
+
+# Problems in Building Agentic Workflow Manually
+
+Trying to build an agentic workflow without a proper framework is like planning a cricket match on sticky notes — it works, but it’s chaotic.
+
+### 1. Too much logic to manage
+Say you're building an AI to handle the last 5 overs.  
+It needs to check run rate, bowler form, injury status, and more.  
+All those if-else conditions get messy fast.
+
+### 2. Too many moving parts
+A smart agent may need to:
+- Fetch live stats  
+- Use tools (like calculators or search)  
+- Track who’s bowled already  
+
+Manually connecting these pieces is time-consuming and fragile.
+
+### 3. No Memory Retention
+The AI might know Bumrah did well earlier — but remembering that later isn’t easy without a memory system.  
+You’ll end up rewriting a lot of glue code just to pass data around.
+
+---
+
+# What is LangGraph?
+
+**LangGraph** is a Python framework (built on **LangChain**) that helps you create **agentic workflows like a flowchart**.
+
+Instead of writing messy if-else logic, you define:
+
+- **Steps** (called nodes)  
+- **How data flows** between them (like edges in a graph)  
+- **What happens at each point** (e.g. run a tool, make a decision, etc.)
+
+---
+
+# How LangGraph Solves the Problem of Manual Agentic Workflows
+
+- **Clear Logic Flow** → You define steps and their connections visually (no messy if-else chains).  
+- **Built-in Memory** → LangGraph shares state across steps, so data naturally flows through the workflow.  
+- **Easy to Visualize & Debug** → The workflow is graph-based, making it easy to understand and maintain.  
+- **Support for Streaming & Checkpoints** → Ideal for workflows that require long thinking or real-time feedback.  
+- **Modular & Reusable** → Each node does one job — you can reuse or replace steps like LEGO blocks.  
+
+---
+
+# Example
+
+## Setup
+
+```bash
+pip install langgraph openai python-dotenv pydantic typing-extensions
+
+# 🏏 Cricket Strategy Agent with LangGraph
+
+```python
+# Imports
+from openai import OpenAI
+from dotenv import load_dotenv
+from typing_extensions import TypedDict
+from langgraph.graph import StateGraph, START, END
+from pydantic import BaseModel
+from typing import Literal
+
+# Load Environment & Initialize client
+load_dotenv()
+client = OpenAI()
+
+# Define the State
+class State(TypedDict):
+    match_context: str
+    is_critical_over: bool | None
+    selected_bowler: str | None
+
+# Define GPT output schema using Pydantic
+class ClassifyCrucialOver(BaseModel):
+    is_critical_over: bool
+
+# Defining the Nodes
+
+# Node 1 - Analyze the situation of the match
+def analyze_match(state: State):
+    match_context = state["match_context"]
+
+    SYSTEM_PROMPT = """
+    You are a Cricket Strategist. You will be given a match situation and your job is to decide whether the current over is a Crucial Over or not from the perspective of the Bowling Team.
+
+    Return the response in specified JSON BOOLEAN only
+    """
+
+    response = client.beta.chat.completions.parse(
+        model="gpt-4.1",
+        response_format=ClassifyCrucialOver,
+        messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": match_context}
+        ]
+    )
+
+    is_critical_over = response.choices[0].message.parsed.is_critical_over
+
+    state["is_critical_over"] = is_critical_over
+    return state
+
+# Node 2 - Route based on Analysis
+def route_query(state: State) -> Literal["critical_over", "normal_over"]:
+    is_critical = state["is_critical_over"]
+
+    if is_critical:
+        return "critical_over"
+    return "normal_over"
+
+# Decision Nodes
+def critical_over(state: State):
+    state["selected_bowler"] = "Bumrah"
+    return state
+
+def normal_over(state: State):
+    state["selected_bowler"] = "Kuldeep"
+    return state
+
+# Build the LangGraph
+graph_builder = StateGraph(State)
+
+graph_builder.add_node("analyze_match", analyze_match)
+graph_builder.add_node("critical_over", critical_over)
+graph_builder.add_node("normal_over", normal_over)
+
+graph_builder.add_edge(START, "analyze_match")
+graph_builder.add_conditional_edges("analyze_match", route_query)
+
+graph_builder.add_edge("critical_over", END)
+graph_builder.add_edge("normal_over", END)
+
+graph = graph_builder.compile()
+
+# Execution
+def main():
+    context = input("Enter the match situation (e.g 12 runs in 6 balls) : ")
+
+    _state: State = {
+        "match_context": context,
+        "is_critical_over": None,
+        "selected_bowler": None
+    }
+
+    result = graph.invoke(_state)
+    print("Response : ", result)
+    print("✅ Final Decision: ", result["selected_bowler"])
+
+main()
+
