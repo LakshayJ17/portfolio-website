@@ -41,7 +41,7 @@ export default async function SingleProject({
           height={400}
           src={project.image}
           alt={project.title}
-          className="mx-auto h-64 w-full max-w-4xl rounded-2xl border border-gray-200 object-cover shadow-lg md:h-80 lg:h-96"
+          className="mx-auto h-64 w-full max-w-4xl rounded-2xl border border-gray-200 shadow-lg md:h-80 lg:h-96"
           priority
         />
       </div>
