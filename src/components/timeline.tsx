@@ -19,6 +19,15 @@ export const Timeline = () => {
 
     const data: Data[] = [
         {
+            title: "Dec'25 - Present",
+            content: [
+                {
+                    title: "Web Developer Intern at Vorombetech Solutions",
+                    description: "Developing scalable full-stack projects with fully responsive UI and smooth user experience.",
+                },
+            ],
+        },
+        {
             title: "2025",
             content: [
                 {

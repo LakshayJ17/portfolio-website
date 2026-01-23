@@ -31,7 +31,7 @@ export default function Home() {
             <span>Download Resume</span>
           </a>
         </div>
-        <Projects projects={projects.slice(0, 2)} />
+        <Projects projects={projects} />
         <LandingBlogs />
       </Container>
     </div>

@@ -76,7 +76,7 @@ export const ContactForm = () => {
                 </div>
                 <button
                     type="submit"
-                    className="bg-primary rounded-md px-4 py-2 text-white"
+                    className="bg-primary rounded-md px-4 py-2 text-white cursor-pointer"
                 >
                     Send message
                 </button>
