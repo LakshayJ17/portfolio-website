@@ -3,6 +3,12 @@ import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
 import { Scales } from "@/components/scales";
 import { Subheading } from "@/components/subheading";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Contact",
+    description: "Get in touch with Lakshay Jain.",
+};
 
 export default function ContactPage() {
     return (

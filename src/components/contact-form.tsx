@@ -1,23 +1,33 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { toast } from "sonner";
 
 export const ContactForm = () => {
+    const [sending, setSending] = useState(false);
+
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const form = e.currentTarget;
         const data = new FormData(form);
+        setSending(true);
 
-        await fetch("https://formspree.io/f/mzzvnnjn", {
-            method: "POST",
-            body: data,
-            headers: {
-                Accept: "application/json",
-            },
-        });
-        toast.success("Thank You! Your message has been sent.")
-        form.reset();
+        try {
+            const res = await fetch("https://formspree.io/f/mzzvnnjn", {
+                method: "POST",
+                body: data,
+                headers: {
+                    Accept: "application/json",
+                },
+            });
+            if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
+            toast.success("Thank You! Your message has been sent.");
+            form.reset();
+        } catch {
+            toast.error("Something went wrong. Please try again in a moment.");
+        } finally {
+            setSending(false);
+        }
     };
 
     return (
@@ -76,9 +86,10 @@ export const ContactForm = () => {
                 </div>
                 <button
                     type="submit"
-                    className="bg-primary rounded-md px-4 py-2 text-white cursor-pointer"
+                    disabled={sending}
+                    className="bg-primary rounded-md px-4 py-2 text-white cursor-pointer disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                    Send message
+                    {sending ? "Sending..." : "Send message"}
                 </button>
             </div>
         </form>

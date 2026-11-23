@@ -1,8 +1,13 @@
 import { Container } from "@/components/container";
 import { Scales } from "@/components/scales";
-import { getBlogFrontMatterBySlug, getSingleBlog } from "@/utils/mdx";
+import { getBlogFrontMatterBySlug, getBlogs, getSingleBlog } from "@/utils/mdx";
 import Image from "next/image";
 import { redirect } from "next/navigation";
+
+export async function generateStaticParams() {
+  const blogs = await getBlogs();
+  return blogs.map((blog) => ({ slug: blog.slug }));
+}
 
 export async function generateMetadata({
   params,
@@ -18,7 +23,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: frontmatter.title + " - Lakshay Jain",
+    title: frontmatter.title,
     description: frontmatter.description,
   };
 }
@@ -36,7 +41,7 @@ export default async function SingleBlogPage({
     redirect("/blog");
   }
 
-  const { content, frontmatter } = blog;
+  const { content, frontmatter, readingTime } = blog;
 
   return (
     <Container className="min-h-screen px-10 md:pt-20 md:pb-10">
@@ -82,7 +87,7 @@ export default async function SingleBlogPage({
             })}
           </time>
           <span className="hidden md:inline">•</span>
-          <span className="hidden md:inline">5 min read</span>
+          <span className="hidden md:inline">{readingTime} min read</span>
         </div>
       </div>
 

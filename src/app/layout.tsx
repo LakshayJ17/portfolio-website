@@ -5,15 +5,24 @@ import { Navbar } from "@/components/navbar";
 import { ViewTransitions } from "next-view-transitions";
 import { Footer } from "@/components/navbar/footer";
 import { Toaster } from "sonner";
+import { site } from "@/constants/site";
 
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800", "900"],
-});
+// Inter is a variable font: leaving out `weight` ships one file that covers every weight.
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lakshay Jain",
-  description: "Portfolio website of Lakshay Jain",
+  metadataBase: new URL(site.url),
+  title: { default: site.name, template: `%s - ${site.name}` },
+  description: site.description,
+  openGraph: {
+    type: "website",
+    url: site.url,
+    siteName: site.name,
+    title: site.name,
+    description: site.description,
+    images: [{ url: "/avatar-portfolio.png", width: 256, height: 256, alt: site.name }],
+  },
+  twitter: { card: "summary", creator: "@Lakshcode" },
 };
 
 export default function RootLayout({

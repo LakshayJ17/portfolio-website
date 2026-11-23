@@ -8,7 +8,7 @@ import { Link } from "next-view-transitions";
 
 
 export const metadata: Metadata = {
-    title: "All blogs - Lakshay Jain",
+    title: "Blog",
     description: "All my general wisdom and thoughts",
 };
 
@@ -28,12 +28,12 @@ export default async function BlogsPage() {
                     All blogs
                 </Heading>
                 <Subheading>
-                    I&apos;m a passionate Full Stack Web Developer who transforms ideas
-                    into dynamic, user-centric digital experiences. With expertise
-                    spanning modern frontend frameworks like React and Next.js to robust
-                    backend technologies including Node.js and databases, I craft scalable
-                    solutions that bridge the gap between innovative design and powerful
-                    functionality.
+                    I&apos;m a Software Developer who transforms ideas into dynamic,
+                    user-centric digital experiences. With expertise spanning modern
+                    frontend frameworks like React and Next.js, robust backend
+                    technologies including Node.js and databases, and AI systems built on
+                    LLMs, RAG and agents, I craft scalable solutions that bridge the gap
+                    between innovative design and powerful functionality.
                 </Subheading>
                 <div className="flex flex-col gap-8 py-10 px-4">
                     {allBlogs.map((blog, idx) => (

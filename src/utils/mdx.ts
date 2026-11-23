@@ -1,79 +1,60 @@
-import { promises as fs } from 'fs';
-import path from 'path';
-import matter from 'gray-matter';
-import { remark } from 'remark';
-import html from 'remark-html';
+import { promises as fs } from "fs";
+import path from "path";
+import matter from "gray-matter";
+import { remark } from "remark";
+import html from "remark-html";
+import { parseDate } from "@/lib/utils";
 
 type FrontMatter = {
-    title: string;
-    description: string;
-    image: string;
-    date: string;
-}
+  title: string;
+  description: string;
+  image: string;
+  date: string;
+};
+
+const BLOG_DIR = path.join(process.cwd(), "src/data");
+const WORDS_PER_MINUTE = 220;
+
+const readBlogFile = async (slug: string) => {
+  try {
+    return await fs.readFile(path.join(BLOG_DIR, `${slug}.mdx`), "utf-8");
+  } catch {
+    return null;
+  }
+};
 
 export const getSingleBlog = async (slug: string) => {
-    try {
-        const singleBlog = await fs.readFile(
-            path.join(process.cwd(), "src/data", `${slug}.mdx`),
-            "utf-8"
-        );
+  const file = await readBlogFile(slug);
+  if (!file) return null;
 
-        if (!singleBlog) {
-            return null;
-        }
+  const { data, content } = matter(file);
+  const processed = await remark().use(html).process(content);
+  const words = content.trim().split(/\s+/).length;
 
-        // Parse frontmatter and content separately
-        const { data: frontmatter, content } = matter(singleBlog);
-        
-        // Convert MDX to HTML
-        const processedContent = await remark()
-            .use(html)
-            .process(content);
-        const htmlContent = String(processedContent);
-
-        return { content: htmlContent, frontmatter: frontmatter as FrontMatter };
-
-    } catch (error) {
-        console.error("Error reading blog:", error);
-        return null
-    }
-}
-
-export const getBlogs = async () => {
-    const files = await fs.readdir(path.join(process.cwd(), 'src/data'));
-
-    const allBlogs = await Promise.all(
-        files.map(async file => {
-            const slug = file.replace('.mdx', '');
-            const frontmatter = await getBlogFrontMatterBySlug(slug);
-
-            return {
-                slug,
-                ...frontmatter,
-            };
-        })
-    );
-
-    return allBlogs;
+  return {
+    content: String(processed),
+    frontmatter: data as FrontMatter,
+    readingTime: Math.max(1, Math.round(words / WORDS_PER_MINUTE)),
+  };
 };
 
 export const getBlogFrontMatterBySlug = async (slug: string) => {
-    try {
-        const singleBlog = await fs.readFile(
-            path.join(process.cwd(), "src/data", `${slug}.mdx`),
-            "utf-8"
-        )
+  const file = await readBlogFile(slug);
+  if (!file) return null;
+  return matter(file).data as FrontMatter;
+};
 
-        if (!singleBlog) {
-            return null;
-        }
+/** All blog posts, newest first. */
+export const getBlogs = async () => {
+  const files = (await fs.readdir(BLOG_DIR)).filter((file) => file.endsWith(".mdx"));
 
-        // Parse only frontmatter
-        const { data: frontmatter } = matter(singleBlog);
+  const blogs = await Promise.all(
+    files.map(async (file) => {
+      const slug = file.replace(/\.mdx$/, "");
+      const frontmatter = await getBlogFrontMatterBySlug(slug);
+      return { slug, ...frontmatter };
+    }),
+  );
 
-        return frontmatter as FrontMatter;
-    } catch (error) {
-        console.error("Error reading blog frontmatter:", error);
-        return null;
-    }
-}
+  return blogs.sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
+};

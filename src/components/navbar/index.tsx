@@ -48,7 +48,7 @@ export const Navbar = () => {
         handleResize();
         window.addEventListener("resize", handleResize);
         return () => window.removeEventListener("resize", handleResize);
-    });
+    }, []);
 
     const width = isSmallScreen ? widthSmallScreen : widthBigScreen;
 

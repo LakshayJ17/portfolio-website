@@ -5,7 +5,7 @@ import { motion, useInView } from "motion/react";
 import { IconCircleCheckFilled } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
 
-type Data = {
+export type TimelineData = {
     title: string;
     content: {
         title: string;
@@ -13,39 +13,10 @@ type Data = {
     }[];
 };
 
-export const Timeline = () => {
+export const Timeline = ({ data }: { data: TimelineData[] }) => {
     const ref = useRef<HTMLDivElement>(null);
-    const isInView = useInView(ref, { once: true, amount: 0.6 });
-
-    const data: Data[] = [
-        {
-            title: "Dec'25 - Present",
-            content: [
-                {
-                    title: "Web Developer Intern at Vorombetech Solutions",
-                    description: "Developing scalable full-stack projects with fully responsive UI and smooth user experience.",
-                },
-            ],
-        },
-        {
-            title: "2025",
-            content: [
-                {
-                    title: "Completed my first freelance project",
-                    description: "Built a RAG based chatbot and integrated in a real estate website",
-                },
-            ],
-        },
-        {
-            title: "2024",
-            content: [
-                {
-                    title: "Secured 3rd rank in Internal SIH (Smart India Hackathon)",
-                    description: "Ranked 3rd amongst 15 teams in Internal SIH held at GD Goenka University for project GyaanSetu",
-                },
-            ],
-        }
-    ];
+    // A low threshold so long timelines still reveal on short (mobile) screens.
+    const isInView = useInView(ref, { once: true, amount: 0.15 });
 
     return (
         <div ref={ref} className="py-4 my-6 px-4 shadow-section-inset border-y border-neutral-100">

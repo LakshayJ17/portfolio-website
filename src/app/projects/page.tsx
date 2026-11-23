@@ -1,8 +1,14 @@
 import { Container } from "@/components/container";
 import { Heading } from "@/components/heading";
-import { Projects } from "@/components/projects";
+import { OtherProjects, Projects } from "@/components/projects";
 import { Scales } from "@/components/scales";
 import { Subheading } from "@/components/subheading";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Projects",
+    description: "Projects by Lakshay Jain, including Verbatim, Resurge, MindIndex and BlogNest.",
+};
 
 export default function ProjectsPage() {
     return (
@@ -15,6 +21,7 @@ export default function ProjectsPage() {
                         Checkout my projects
                     </Subheading>
                     <Projects />
+                    <OtherProjects />
                 </Container>
             </div>
         </div>

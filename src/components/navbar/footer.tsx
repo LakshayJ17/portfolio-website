@@ -14,16 +14,16 @@ export const Footer = () => {
     <Container className="flex justify-between border-t border-neutral-100 p-3">
       <p className="text-xs text-neutral-500">Built by Lakshay Jain</p>
       <div className="flex items-center justify-center gap-4">
-        <Link href={"https://github.com/LakshayJ17"} target="blank">
+        <Link href={"https://github.com/LakshayJ17"} target="_blank" rel="noopener noreferrer">
           <IconBrandGithub className="size-4 text-neutral-500 hover:text-neutral-700" />
         </Link>
-        <Link href={"https://x.com/Lakshcode"} target="blank">
+        <Link href={"https://x.com/Lakshcode"} target="_blank" rel="noopener noreferrer">
           <IconBrandX className="size-4 text-neutral-500 hover:text-neutral-700" />
         </Link>
-        <Link href={"https://www.linkedin.com/in/lakshayj17"} target="blank">
+        <Link href={"https://www.linkedin.com/in/lakshayj17"} target="_blank" rel="noopener noreferrer">
           <IconBrandLinkedin className="size-4 text-neutral-500 hover:text-neutral-700" />
         </Link>
-        <Link href={"https://leetcode.com/u/meLaksh17/"} target="blank">
+        <Link href={"https://leetcode.com/u/meLaksh17/"} target="_blank" rel="noopener noreferrer">
           <IconBrandLeetcode className="size-4 text-neutral-500 hover:text-neutral-700" />
         </Link>
       </div>
