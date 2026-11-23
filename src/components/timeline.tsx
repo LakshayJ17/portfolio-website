@@ -15,7 +15,6 @@ export type TimelineData = {
 
 export const Timeline = ({ data }: { data: TimelineData[] }) => {
     const ref = useRef<HTMLDivElement>(null);
-    // A low threshold so long timelines still reveal on short (mobile) screens.
     const isInView = useInView(ref, { once: true, amount: 0.15 });
 
     return (

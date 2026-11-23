@@ -7,7 +7,6 @@ import { Footer } from "@/components/navbar/footer";
 import { Toaster } from "sonner";
 import { site } from "@/constants/site";
 
-// Inter is a variable font: leaving out `weight` ships one file that covers every weight.
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {

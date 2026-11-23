@@ -2,14 +2,11 @@ export type Project = {
   title: string;
   slug: string;
   year: string;
-  /** One line shown on cards and lists. */
   description: string;
-  /** Paragraph shown on the project page. */
   longDescription: string;
   technologies: string[];
   githubUrl: string;
   liveUrl?: string;
-  /** Featured projects get a card with a screenshot and their own page. */
   featured: boolean;
   image?: string;
   features: string[];

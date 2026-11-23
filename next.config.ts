@@ -4,7 +4,6 @@ const RESUME = "/resume/Lakshay_Jain_Software_Engineer_Resume.pdf";
 
 const nextConfig: NextConfig = {
   async redirects() {
-    // Keep old and short resume links working.
     return [
       { source: "/resume", destination: RESUME, permanent: false },
       { source: "/resume/Lakshay_Jain_FullStackDev_Resume.pdf", destination: RESUME, permanent: false },

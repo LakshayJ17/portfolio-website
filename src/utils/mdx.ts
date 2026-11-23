@@ -44,7 +44,6 @@ export const getBlogFrontMatterBySlug = async (slug: string) => {
   return matter(file).data as FrontMatter;
 };
 
-/** All blog posts, newest first. */
 export const getBlogs = async () => {
   const files = (await fs.readdir(BLOG_DIR)).filter((file) => file.endsWith(".mdx"));
 

@@ -1,6 +1,5 @@
 import type { TimelineData } from "@/components/timeline";
 
-/** Work experience, shown on the home page. */
 export const experience: TimelineData[] = [
   {
     title: "Jul'26 - Present",
@@ -34,7 +33,6 @@ export const experience: TimelineData[] = [
   },
 ];
 
-/** Experience plus achievements, shown on the about page. */
 export const milestones: TimelineData[] = [
   ...experience,
   {

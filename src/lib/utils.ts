@@ -5,7 +5,6 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-/** Parses blog dates written as MM-DD-YYYY or YYYY-MM-DD, as UTC so the day never shifts by timezone. */
 export function parseDate(input: string | undefined): Date {
   if (!input) return new Date(NaN);
   const mdy = /^(\d{1,2})-(\d{1,2})-(\d{4})$/.exec(input);
