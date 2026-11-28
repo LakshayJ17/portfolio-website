@@ -2,7 +2,6 @@ import {
   IconBrandGithub,
   IconBrandLeetcode,
   IconBrandLinkedin,
-  IconBrandTelegram,
   IconBrandX,
 } from "@tabler/icons-react";
 import Link from "next/link";

@@ -7,7 +7,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Projects",
-    description: "Projects by Lakshay Jain, including Verbatim, Resurge, MindIndex and BlogNest.",
+    description: "Projects by Lakshay Jain, including BlogNest, MindIndex, Resurge and Verbatim.",
 };
 
 export default function ProjectsPage() {

@@ -28,15 +28,11 @@ export default async function BlogsPage() {
                     All blogs
                 </Heading>
                 <Subheading>
-                    I&apos;m a Software Developer who transforms ideas into dynamic,
-                    user-centric digital experiences. With expertise spanning modern
-                    frontend frameworks like React and Next.js, robust backend
-                    technologies including Node.js and databases, and AI systems built on
-                    LLMs, RAG and agents, I craft scalable solutions that bridge the gap
-                    between innovative design and powerful functionality.
+                    Notes on what I&apos;m learning and building, mostly about GenAI, agents
+                    and web development.
                 </Subheading>
                 <div className="flex flex-col gap-8 py-10 px-4">
-                    {allBlogs.map((blog, idx) => (
+                    {allBlogs.map((blog) => (
                         <Link href={`/blog/${blog.slug}`} key={blog.title}>
                             <div className="flex items-center justify-between">
                                 <h2 className="text-primary text-base font-bold tracking-tight">

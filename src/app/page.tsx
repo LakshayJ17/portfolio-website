@@ -18,12 +18,10 @@ export default function Home() {
         <Scales />
         <Heading>Lakshay Jain</Heading>
         <Subheading>
-          I&apos;m a Software Developer who transforms ideas into dynamic,
-          user-centric digital experiences. With expertise spanning modern
-          frontend frameworks like React and Next.js, robust backend
-          technologies including Node.js and databases, and AI systems built on
-          LLMs, RAG and agents, I craft scalable solutions that bridge the gap
-          between innovative design and powerful functionality.
+          I&apos;m a software developer. I build full-stack web apps with React,
+          Next.js and Node.js, and AI tools on top of LLMs, RAG and agents. I
+          currently work at Ethara AI on the environments used to evaluate LLM
+          coding agents.
         </Subheading>
         <div className="flex m-4">
           <a

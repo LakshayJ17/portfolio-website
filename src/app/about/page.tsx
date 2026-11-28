@@ -22,12 +22,11 @@ export default function AboutPage() {
                         About Me
                     </Heading>
                     <Subheading>
-                        I&apos;m a Software Developer who loves transforming ideas into
-                        dynamic, user-centric digital experiences. With expertise in modern
-                        frontend frameworks like React and Next.js, robust backend
-                        technologies including Node.js, and AI systems built on LLMs, RAG and
-                        agents, I enjoy building scalable solutions that bridge the gap
-                        between innovative design and powerful functionality.
+                        I&apos;m a software developer who works across the stack, mostly with
+                        React, Next.js, Node.js and PostgreSQL. Most of my recent projects use
+                        LLMs, like document Q&amp;A with citations and a multi-agent research
+                        tool. I currently work at Ethara AI on the environments used to
+                        evaluate LLM coding agents.
                     </Subheading>
 
                     <SectionHeading className="text-secondary max-w-lg text-sm md:text-base mx-5">
