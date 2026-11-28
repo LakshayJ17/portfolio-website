@@ -20,8 +20,8 @@ export default function Home() {
         <Subheading>
           I&apos;m a software developer. I build full-stack web apps with React,
           Next.js and Node.js, and AI tools on top of LLMs, RAG and agents. I
-          currently work at Ethara AI on the environments used to evaluate LLM
-          coding agents.
+          currently work at Ethara AI as a software engineer, setting up the
+          environments that LLM coding agents are evaluated in.
         </Subheading>
         <div className="flex m-4">
           <a

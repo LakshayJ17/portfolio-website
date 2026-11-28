@@ -5,9 +5,9 @@ export const experience: TimelineData[] = [
     title: "Jul'26 - Present",
     content: [
       {
-        title: "Software Developer at Ethara AI",
+        title: "Software Engineer at Ethara AI",
         description:
-          "Writing Dockerfiles that build reproducible, containerized task environments for an LLM coding-agent evaluation harness, and reviewing coding-agent trajectories to catch environment failures and agent errors before the data is used for training.",
+          "Configuring code repositories for an LLM coding-agent evaluation harness, with Dockerfiles and setup that agents can work in, then running agent trajectories to evaluate the agents and trace each failure to the environment or the agent.",
       },
     ],
   },

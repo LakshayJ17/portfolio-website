@@ -25,8 +25,8 @@ export default function AboutPage() {
                         I&apos;m a software developer who works across the stack, mostly with
                         React, Next.js, Node.js and PostgreSQL. Most of my recent projects use
                         LLMs, like document Q&amp;A with citations and a multi-agent research
-                        tool. I currently work at Ethara AI on the environments used to
-                        evaluate LLM coding agents.
+                        tool. I currently work at Ethara AI as a software engineer, setting up
+                        the environments that LLM coding agents are evaluated in.
                     </Subheading>
 
                     <SectionHeading className="text-secondary max-w-lg text-sm md:text-base mx-5">
